@@ -1,5 +1,6 @@
 var timerEl = document.getElementById('time');
 var startButton = document.querySelector('#start');
+var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3]
 
 //Timer function 
 function timer(){
@@ -16,4 +17,15 @@ function timer(){
     },1000);
 }
 
-startButton.addEventListener("click",timer)
+//Clear Screen function
+function clearScreen() {
+    timer();
+    var x = document.getElementById("start-screen");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+startButton.addEventListener("click",clearScreen)

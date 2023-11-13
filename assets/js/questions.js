@@ -9,3 +9,11 @@ var quizQuestion2 = {
     choices: ["The <head> section", "Both the <head> and the <body> section are correct", "The <body> section", "Anywhere"],
     answer: "Both the <head> and the <body> section are correct"
 }
+
+var quizQuestion3 = {
+    question: "How do you write 'Hello World' in an alert box?",
+    choices: ["msg('Hello world');", "msgBox('Hello world');", "alertBox('Hello world');", "alert('Hello world');"],
+    answer: "alert('Hello world');"
+}
+
+var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3]
