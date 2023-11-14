@@ -8,6 +8,7 @@ var answer1 = document.createElement("button");
 var answer2 = document.createElement("button");
 var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
+var answerResult = document.getElementById("AnswerResult")
 
 //Timer function 
 function timer(){
@@ -49,25 +50,46 @@ function showQuestion(){
         answersEl.appendChild(answer2);
         answersEl.appendChild(answer3);
         answersEl.appendChild(answer4);
-        var chosenAnswer = "";
         answer1.addEventListener("click", function() {
-            chosenAnswer = answer1.textContent;
-            console.log(chosenAnswer)
+            checkAnswer(answer1.textContent);
         })
         answer2.addEventListener("click", function() {
-            chosenAnswer = answer2.textContent;
-            console.log(chosenAnswer)
+            checkAnswer(answer2.textContent);
         })
         answer3.addEventListener("click", function() {
-            chosenAnswer = answer3.textContent;
-            console.log(chosenAnswer)
+            checkAnswer(answer3.textContent);
         })
         answer4.addEventListener("click", function() {
-            chosenAnswer = answer4.textContent;
-            console.log(chosenAnswer)
+            checkAnswer(answer4.textContent);
         })
 
 }
+
+function showNextQuestion() {
+    questionIndex++;
+    if(questionIndex < listOfQuestions.length){
+        showQuestion();
+    }
+    else{
+        console.log("Input Initials")
+    }
+}
+
+function checkAnswer(chosenAnswer){
+    if(chosenAnswer === listOfQuestions[questionIndex].answer)
+    {
+    answerResult.textContent = "Correct!"
+    answerResult.setAttribute("class", "text-success")
+    }
+    else{
+        answerResult.textContent = "Incorrect!"
+        answerResult.setAttribute("class", "text-danger")
+        //Here I need to substract from timer
+    }
+    clearScreen();
+    showNextQuestion();
+}
+
 
 
 
