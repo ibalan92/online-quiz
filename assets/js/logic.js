@@ -26,7 +26,6 @@ function timer(){
 
 //Clear Screen function
 function clearScreen() {
-    timer();
     var x = document.getElementById("start-screen");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -35,22 +34,41 @@ function clearScreen() {
     }
   }
 
-function showQuestion(){
-    clearScreen();
-    for(var i = 0; i<listOfQuestions.length;i++){
-        questionEl.textContent = listOfQuestions[i].question;
+var questionIndex = 0; 
 
-        answer1.textContent = listOfQuestions[i].choices[0];
-        answer2.textContent = listOfQuestions[i].choices[1];
-        answer3.textContent = listOfQuestions[i].choices[2];
-        answer4.textContent = listOfQuestions[i].choices[3];
+function showQuestion(){
+    timer();
+    clearScreen();
+        questionEl.textContent = listOfQuestions[questionIndex].question;
+        answer1.textContent = listOfQuestions[questionIndex].choices[0];
+        answer2.textContent = listOfQuestions[questionIndex].choices[1];
+        answer3.textContent = listOfQuestions[questionIndex].choices[2];
+        answer4.textContent = listOfQuestions[questionIndex].choices[3];
         choicesEl.appendChild(answersEl);
         answersEl.appendChild(answer1);
         answersEl.appendChild(answer2);
         answersEl.appendChild(answer3);
         answersEl.appendChild(answer4);
+        var chosenAnswer = "";
+        answer1.addEventListener("click", function() {
+            chosenAnswer = answer1.textContent;
+            console.log(chosenAnswer)
+        })
+        answer2.addEventListener("click", function() {
+            chosenAnswer = answer2.textContent;
+            console.log(chosenAnswer)
+        })
+        answer3.addEventListener("click", function() {
+            chosenAnswer = answer3.textContent;
+            console.log(chosenAnswer)
+        })
+        answer4.addEventListener("click", function() {
+            chosenAnswer = answer4.textContent;
+            console.log(chosenAnswer)
+        })
 
-    }
 }
+
+
 
 startButton.addEventListener("click",showQuestion)
