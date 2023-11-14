@@ -12,7 +12,7 @@ var answerResult = document.getElementById("AnswerResult")
 
 //Timer function 
 function timer(){
-    var timeLeft = 10;
+    var timeLeft = 120;
     var timeInterval = setInterval(function (){
         if (timeLeft > -1){
             timerEl.textContent = timeLeft;
@@ -62,31 +62,32 @@ function showQuestion(){
         answer4.addEventListener("click", function() {
             checkAnswer(answer4.textContent);
         })
-
 }
 
 function showNextQuestion() {
     questionIndex++;
+    clearScreen();
     if(questionIndex < listOfQuestions.length){
         showQuestion();
     }
     else{
+        clearScreen();
         console.log("Input Initials")
     }
 }
 
 function checkAnswer(chosenAnswer){
+    console.log(chosenAnswer)
     if(chosenAnswer === listOfQuestions[questionIndex].answer)
     {
-    answerResult.textContent = "Correct!"
-    answerResult.setAttribute("class", "text-success")
+    answerResult.textContent = "Correct!";
+    answerResult.setAttribute("class", "text-success");
+    
     }
     else{
         answerResult.textContent = "Incorrect!"
-        answerResult.setAttribute("class", "text-danger")
-        //Here I need to substract from timer
+        answerResult.setAttribute("class", "text-danger");
     }
-    clearScreen();
     showNextQuestion();
 }
 
