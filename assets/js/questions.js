@@ -16,4 +16,3 @@ var quizQuestion3 = {
     answer: "alert('Hello world');"
 }
 
-var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3]
