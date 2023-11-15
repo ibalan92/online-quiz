@@ -1,7 +1,8 @@
 var timerEl = document.getElementById('time');
 var startButton = document.querySelector('#start');
-var submitButton = document.querySelector('#submit');
 var questionEl = document.querySelector('#question-title');
+var submitButton = document.querySelector('#submit');
+var initialsEl = document.querySelector("#initials");
 var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3];
 var choicesEl = document.getElementById('choices');
 var answersEl = document.createElement("ol");
@@ -117,3 +118,15 @@ function checkAnswer(chosenAnswer){
 
 startButton.addEventListener("click",timer)
 startButton.addEventListener("click",showQuestion)
+
+
+
+
+function getInitials(){
+    var initials = document.getElementById("initials").value;
+    console.log(initials);
+    window.location.href = "highscores.html";
+}
+
+
+submitButton.addEventListener("click",getInitials);
