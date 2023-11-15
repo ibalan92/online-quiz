@@ -45,10 +45,10 @@ answer3.addEventListener("click", function() {
 answer4.addEventListener("click", function() {
     checkAnswer(answer4.textContent);
 })
-
+var questionsEl = document.getElementById("questions");
 function showQuestion(){
     clearScreen();
-    var questionsEl = document.getElementById("questions");
+    
     questionsEl.classList.remove("hide");
     questionEl.textContent = listOfQuestions[questionIndex].question;
     answer1.textContent = listOfQuestions[questionIndex].choices[0];
@@ -68,6 +68,7 @@ function showNextQuestion() {
         showQuestion();
     }
     else{
+        questionsEl.setAttribute("class", "hide");
         var x = document.getElementById("end-screen");
         x.classList.remove("hide");
     }
