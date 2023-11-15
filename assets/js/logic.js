@@ -121,7 +121,7 @@ startButton.addEventListener("click",showQuestion)
 
 
 
-
+var initials = '';
 function getInitials(){
     var initials = document.getElementById("initials").value;
     console.log(initials);
