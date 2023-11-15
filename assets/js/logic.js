@@ -71,14 +71,23 @@ answersEl.appendChild(answer4);
 }
 
 function showNextQuestion() {
-    questionIndex++;
-    if(questionIndex < listOfQuestions.length){
-        showQuestion();
+    if(timeLeft > 0){
+        questionIndex++;
+        if(questionIndex < listOfQuestions.length){
+            showQuestion();
+        }
+        else{
+            questionsEl.setAttribute("class", "hide");
+            var x = document.getElementById("end-screen");
+            x.classList.remove("hide");
+            stopTimer();
+        }
     }
-    else{
+    else {
         questionsEl.setAttribute("class", "hide");
         var x = document.getElementById("end-screen");
         x.classList.remove("hide");
+        timerEl.textContent = "0";
         stopTimer();
     }
 }
@@ -93,6 +102,9 @@ function checkAnswer(chosenAnswer){
     else{
         answerResult.textContent = "Incorrect!"
         timeLeft -= 10;
+        if (timeLeft < 0) {
+            timeLeft = 0;
+        }
         answerResult.style.color = "red";
     }
     setTimeout(function () {
