@@ -33,6 +33,19 @@ function clearScreen() {
 
 var questionIndex = 0; 
 
+answer1.addEventListener("click", function() {
+    checkAnswer(answer1.textContent);
+})
+answer2.addEventListener("click", function() {
+    checkAnswer(answer2.textContent);
+})
+answer3.addEventListener("click", function() {
+    checkAnswer(answer3.textContent);
+})
+answer4.addEventListener("click", function() {
+    checkAnswer(answer4.textContent);
+})
+
 function showQuestion(){
     clearScreen();
     var questionsEl = document.getElementById("questions");
@@ -47,30 +60,16 @@ function showQuestion(){
     answersEl.appendChild(answer2);
     answersEl.appendChild(answer3);
     answersEl.appendChild(answer4);
-    answer1.addEventListener("click", function() {
-        checkAnswer(answer1.textContent);
-    })
-    answer2.addEventListener("click", function() {
-        checkAnswer(answer2.textContent);
-    })
-    answer3.addEventListener("click", function() {
-        checkAnswer(answer3.textContent);
-    })
-    answer4.addEventListener("click", function() {
-        checkAnswer(answer4.textContent);
-    })
 }
 
 function showNextQuestion() {
     questionIndex++;
-    clearScreen();
     if(questionIndex < listOfQuestions.length){
         showQuestion();
     }
     else{
-        clearScreen();
         var x = document.getElementById("end-screen");
-        x.setAttribute("class", "hide");
+        x.classList.remove("hide");
     }
 }
 
@@ -79,13 +78,12 @@ function checkAnswer(chosenAnswer){
     if(chosenAnswer === listOfQuestions[questionIndex].answer)
     {
     answerResult.textContent = "Correct!";
-    answerResult.setAttribute("class", "text-success");
-    
+    answerResult.style.color = "green";
     }
     else{
         answerResult.textContent = "Incorrect!"
         timeLeft -= 10;
-        answerResult.setAttribute("class", "text-danger");
+        answerResult.style.color = "red";
     }
     setTimeout(function () {
         showNextQuestion();
