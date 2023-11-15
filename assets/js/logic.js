@@ -28,13 +28,12 @@ function timer(){
 //Clear Screen function
 function clearScreen() {
     var x = document.getElementById("start-screen");
-    x.setAttribute("class", "hide")
+    x.setAttribute("class", "hide");
   }
 
 var questionIndex = 0; 
 
 function showQuestion(){
-    timer();
     clearScreen();
     var questionsEl = document.getElementById("questions");
     questionsEl.classList.remove("hide");
@@ -70,7 +69,8 @@ function showNextQuestion() {
     }
     else{
         clearScreen();
-        console.log("Input Initials")
+        var x = document.getElementById("end-screen");
+        x.setAttribute("class", "hide");
     }
 }
 
@@ -84,12 +84,14 @@ function checkAnswer(chosenAnswer){
     }
     else{
         answerResult.textContent = "Incorrect!"
+        timeLeft -= 10;
         answerResult.setAttribute("class", "text-danger");
     }
+    setTimeout(1000);
     showNextQuestion();
 }
 
 
 
-
+startButton.addEventListener("click",timer)
 startButton.addEventListener("click",showQuestion)
