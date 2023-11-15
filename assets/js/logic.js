@@ -9,20 +9,28 @@ var answer2 = document.createElement("button");
 var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
 var answerResult = document.getElementById("AnswerResult")
-var timeLeft = 120;
+var timeLeft = 10;
+var timeInterval;
 //Timer function 
 function timer(){
     
-    var timeInterval = setInterval(function (){
+    timeInterval = setInterval(function (){
         if (timeLeft > -1){
             timerEl.textContent = timeLeft;
             timeLeft--;
         }
         else {
-            timerEl.textContent = '';
+            questionsEl.setAttribute("class", "hide");
+            var x = document.getElementById("end-screen");
+            x.classList.remove("hide");
+            timerEl.textContent = "0";
             clearInterval(timeInterval);
         }
     },1000);
+}
+
+function stopTimer(){
+    clearInterval(timeInterval);
 }
 
 //Clear Screen function
@@ -49,17 +57,17 @@ var questionsEl = document.getElementById("questions");
 function showQuestion(){
     clearScreen();
     
-    questionsEl.classList.remove("hide");
-    questionEl.textContent = listOfQuestions[questionIndex].question;
-    answer1.textContent = listOfQuestions[questionIndex].choices[0];
-    answer2.textContent = listOfQuestions[questionIndex].choices[1];
-    answer3.textContent = listOfQuestions[questionIndex].choices[2];
-    answer4.textContent = listOfQuestions[questionIndex].choices[3];
-    choicesEl.appendChild(answersEl);
-    answersEl.appendChild(answer1);
-    answersEl.appendChild(answer2);
-    answersEl.appendChild(answer3);
-    answersEl.appendChild(answer4);
+questionsEl.classList.remove("hide");
+questionEl.textContent = listOfQuestions[questionIndex].question;
+answer1.textContent = listOfQuestions[questionIndex].choices[0];
+answer2.textContent = listOfQuestions[questionIndex].choices[1];
+answer3.textContent = listOfQuestions[questionIndex].choices[2];
+answer4.textContent = listOfQuestions[questionIndex].choices[3];
+choicesEl.appendChild(answersEl);
+answersEl.appendChild(answer1);
+answersEl.appendChild(answer2);
+answersEl.appendChild(answer3);
+answersEl.appendChild(answer4);
 }
 
 function showNextQuestion() {
@@ -71,6 +79,7 @@ function showNextQuestion() {
         questionsEl.setAttribute("class", "hide");
         var x = document.getElementById("end-screen");
         x.classList.remove("hide");
+        stopTimer();
     }
 }
 
