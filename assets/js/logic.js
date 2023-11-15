@@ -9,10 +9,10 @@ var answer2 = document.createElement("button");
 var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
 var answerResult = document.getElementById("AnswerResult")
-
+var timeLeft = 120;
 //Timer function 
 function timer(){
-    var timeLeft = 120;
+    
     var timeInterval = setInterval(function (){
         if (timeLeft > -1){
             timerEl.textContent = timeLeft;
@@ -28,11 +28,7 @@ function timer(){
 //Clear Screen function
 function clearScreen() {
     var x = document.getElementById("start-screen");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
+    x.setAttribute("class", "hide")
   }
 
 var questionIndex = 0; 
@@ -40,28 +36,30 @@ var questionIndex = 0;
 function showQuestion(){
     timer();
     clearScreen();
-        questionEl.textContent = listOfQuestions[questionIndex].question;
-        answer1.textContent = listOfQuestions[questionIndex].choices[0];
-        answer2.textContent = listOfQuestions[questionIndex].choices[1];
-        answer3.textContent = listOfQuestions[questionIndex].choices[2];
-        answer4.textContent = listOfQuestions[questionIndex].choices[3];
-        choicesEl.appendChild(answersEl);
-        answersEl.appendChild(answer1);
-        answersEl.appendChild(answer2);
-        answersEl.appendChild(answer3);
-        answersEl.appendChild(answer4);
-        answer1.addEventListener("click", function() {
-            checkAnswer(answer1.textContent);
-        })
-        answer2.addEventListener("click", function() {
-            checkAnswer(answer2.textContent);
-        })
-        answer3.addEventListener("click", function() {
-            checkAnswer(answer3.textContent);
-        })
-        answer4.addEventListener("click", function() {
-            checkAnswer(answer4.textContent);
-        })
+    var questionsEl = document.getElementById("questions");
+    questionsEl.classList.remove("hide");
+    questionEl.textContent = listOfQuestions[questionIndex].question;
+    answer1.textContent = listOfQuestions[questionIndex].choices[0];
+    answer2.textContent = listOfQuestions[questionIndex].choices[1];
+    answer3.textContent = listOfQuestions[questionIndex].choices[2];
+    answer4.textContent = listOfQuestions[questionIndex].choices[3];
+    choicesEl.appendChild(answersEl);
+    answersEl.appendChild(answer1);
+    answersEl.appendChild(answer2);
+    answersEl.appendChild(answer3);
+    answersEl.appendChild(answer4);
+    answer1.addEventListener("click", function() {
+        checkAnswer(answer1.textContent);
+    })
+    answer2.addEventListener("click", function() {
+        checkAnswer(answer2.textContent);
+    })
+    answer3.addEventListener("click", function() {
+        checkAnswer(answer3.textContent);
+    })
+    answer4.addEventListener("click", function() {
+        checkAnswer(answer4.textContent);
+    })
 }
 
 function showNextQuestion() {
