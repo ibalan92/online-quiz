@@ -1,5 +1,6 @@
 var timerEl = document.getElementById('time');
 var startButton = document.querySelector('#start');
+var submitButton = document.querySelector('#submit');
 var questionEl = document.querySelector('#question-title');
 var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3];
 var choicesEl = document.getElementById('choices');
@@ -9,7 +10,7 @@ var answer2 = document.createElement("button");
 var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
 var answerResult = document.getElementById("AnswerResult")
-var timeLeft = 10;
+var timeLeft = 120;
 var timeInterval;
 //Timer function 
 function timer(){
