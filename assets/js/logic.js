@@ -87,8 +87,9 @@ function checkAnswer(chosenAnswer){
         timeLeft -= 10;
         answerResult.setAttribute("class", "text-danger");
     }
-    setTimeout(1000);
-    showNextQuestion();
+    setTimeout(function () {
+        showNextQuestion();
+    }, 1000);
 }
 
 
