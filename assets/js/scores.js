@@ -1,10 +1,20 @@
-// var li1 = document.createElement("li");
-// var li2 = document.createElement("li");
-// var li3 = document.createElement("li");
-// var li4 = document.createElement("li");
-// var orderedList = document.getElementById("highscores");
-
-// li1.textContent = initials + "-" timeLeft;
-// orderedList.appendChild(li1);
+var playersList = document.querySelector("#highscores");
+var players = JSON.parse(localStorage.getItem("players")) || [];
+console.log(players);
 
 
+
+function renderPlayers() { 
+  
+    for (var i = 0; i < players.length; i++) {
+      var player = players[i];
+  
+      var li = document.createElement("li");
+      li.textContent = player.initials + " - " + player.score;
+      playersList.appendChild(li);
+    }
+  }
+
+  renderPlayers();
+
+  

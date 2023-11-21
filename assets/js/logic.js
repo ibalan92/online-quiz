@@ -14,6 +14,10 @@ var answerResult = document.getElementById("AnswerResult")
 var timeLeft = 120;
 var timeInterval;
 var finalScore = document.getElementById("final-score");
+var players = [];
+
+
+
 //Timer function 
 function timer(){
     
@@ -27,7 +31,7 @@ function timer(){
             var x = document.getElementById("end-screen");
             x.classList.remove("hide");
             timerEl.textContent = "0";
-            finalScore.textContent = "0";
+            finalScore.textContent = "0"; 
             clearInterval(timeInterval);
         }
     },1000);
@@ -85,18 +89,16 @@ function showNextQuestion() {
             questionsEl.setAttribute("class", "hide");
             var x = document.getElementById("end-screen");
             x.classList.remove("hide");
-            finalScore.textContent = timerEl.textContent;
-            
-            
+            finalScore.textContent = timerEl.textContent; 
         }
     }
     else {
+        stopTimer();
         questionsEl.setAttribute("class", "hide");
         var x = document.getElementById("end-screen");
         x.classList.remove("hide");
         timerEl.textContent = "0";
         finalScore.textContent = "0";
-        stopTimer();
     }
 }
 
@@ -120,19 +122,25 @@ function checkAnswer(chosenAnswer){
     }, 1000);
 }
 
-
-
 startButton.addEventListener("click",timer)
 startButton.addEventListener("click",showQuestion)
 
 
+submitButton.addEventListener("click",function (event){
+    event.preventDefault();
+    var initials = document.getElementById("initials").value.trim();
+    var player = {
+        initials: initials,
+        score: finalScore.textContent
+    };
+    console.log(player);
+    if(player.initials === ""){
+        return;
+    }
 
-var initials = '';
-function getInitials(){
-    var initials = document.getElementById("initials").value;
-    console.log(initials);
-    // window.location.href = "highscores.html";
-}
+    players.push(player);
+    localStorage.setItem("players", JSON.stringify(players));
+    console.log(players);
+    window.location.href = "highscores.html";
+} );
 
-
-submitButton.addEventListener("click",getInitials);
