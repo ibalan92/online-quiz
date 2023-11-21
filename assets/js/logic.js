@@ -14,7 +14,7 @@ var answerResult = document.getElementById("AnswerResult")
 var timeLeft = 120;
 var timeInterval;
 var finalScore = document.getElementById("final-score");
-var players = [];
+var players = JSON.parse(localStorage.getItem("players")) || [];
 
 
 
