@@ -7,11 +7,11 @@
  
  The website should look similar to the screenshots below:
 
-![Questions](<assets/img/Capture1.jpg>)
+![Questions](<assets/img/Capture1.JPG>)
 
-![Submitting initials](<assets/img/Capture2.jpg>)
+![Submitting initials](<assets/img/Capture2.JPG>)
 
-![Highscores](<assets/img/Capture3.jpg>)
+![Highscores](<assets/img/Capture3.JPG>)
 
 
 The website can be visited here: https://ibalan92.github.io/online-quiz/
