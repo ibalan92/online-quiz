@@ -21,6 +21,8 @@ var timeLeft = 200;
 var timeInterval;
 var finalScore = document.getElementById("final-score");
 var players = JSON.parse(localStorage.getItem("players")) || [];
+
+//Created audio elements
 var correctAudio = document.createElement("audio");
 var incorrectAudio = document.createElement("audio");
 correctAudio.setAttribute("src", "assets/sfx/correct.wav");
