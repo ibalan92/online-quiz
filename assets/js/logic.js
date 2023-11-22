@@ -21,7 +21,10 @@ var timeLeft = 200;
 var timeInterval;
 var finalScore = document.getElementById("final-score");
 var players = JSON.parse(localStorage.getItem("players")) || [];
-
+var correctAudio = document.createElement("audio");
+var incorrectAudio = document.createElement("audio");
+correctAudio.setAttribute("src", "assets/sfx/correct.wav");
+incorrectAudio.setAttribute("src", "assets/sfx/incorrect.wav");
 
 
 //Timer function 
@@ -114,9 +117,11 @@ function checkAnswer(chosenAnswer){
     {
     answerResult.textContent = "Correct!";
     answerResult.style.color = "green";
+    correctAudio.play();
     }
     else{
-        answerResult.textContent = "Incorrect!"
+        incorrectAudio.play();
+        answerResult.textContent = "Incorrect!";
         //for incorrect answer substract 10 seconds and check if there is still time otherwise set the time to 0
         timeLeft -= 10;
         if (timeLeft < 0) {
