@@ -1,9 +1,8 @@
 var playersList = document.querySelector("#highscores");
 var players = JSON.parse(localStorage.getItem("players")) || [];
-console.log(players);
-
 var clearButton = document.querySelector("#clear");
 
+//Function to display the players and their score and creating them dynamically 
 function renderPlayers() { 
   
     for (var i = 0; i < players.length; i++) {
@@ -17,6 +16,7 @@ function renderPlayers() {
 
   renderPlayers();
 
+  //Clear the highscores when the button clear button is pressed
   clearButton.addEventListener("click",function(event){
     event.preventDefault();
     localStorage.clear();
