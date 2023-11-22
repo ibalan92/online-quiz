@@ -3,7 +3,9 @@ var startButton = document.querySelector('#start');
 var questionEl = document.querySelector('#question-title');
 var submitButton = document.querySelector('#submit');
 var initialsEl = document.querySelector("#initials");
-var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3];
+var listOfQuestions = [quizQuestion1, quizQuestion2, quizQuestion3, 
+                        quizQuestion4, quizQuestion5, quizQuestion6,
+                        quizQuestion7, quizQuestion8, quizQuestion9, quizQuestion10];
 var choicesEl = document.getElementById('choices');
 var answersEl = document.createElement("ol");
 var answer1 = document.createElement("button");
