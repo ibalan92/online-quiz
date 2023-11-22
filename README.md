@@ -28,4 +28,4 @@ If you find any errors in the code or any malfunction, please "pull request" on 
 
 ## License
 
-Please refer to the LICENSE in the repo.
+Please refer to the LICENSE in the repository.
